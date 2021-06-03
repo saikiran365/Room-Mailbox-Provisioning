@@ -2,6 +2,7 @@
 # Room Mailbox Provisioning in Hybrid Exchange environment
 
 # Input file
+
 $Rooms = Import-Csv Rooms_OnPremise.csv
 $ErrorFile = ".\Error_Log.csv"
 
@@ -63,8 +64,7 @@ Foreach($Room in $Rooms)
 
     Write-Host "Provisioning Room Completed & Details updated" $DisplayName -ForegroundColor Green
     }
-    
- Catch
+    Catch
     {
     Write-Host $_.Exception.Message -ForegroundColor Red
     $Error = $_.Exception.Message.ToString()
@@ -72,5 +72,4 @@ Foreach($Room in $Rooms)
     $DisplayName+"`t"+$Error | Out-File $Error_File -Append
     Continue
     }
-
-}
+    }
